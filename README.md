@@ -10,19 +10,6 @@ Run the following command in your Node-RED user directory - typically `~/.node-r
         npm install autana-api-gateway
 
 ## Information
-
-<p>Calls a flow that starts with a named <code>link in</code> node and finish with a <code>link out</code> node configured
-       in 'return' mode, and passes on the response. (a function flow)</p>
-   <h3>Inputs</h3>
-   <dl class="message-properties">
-      <dt class="optional">target<span class="property-type">string</span></dt>
-      <dd>
-         <p>The name of the <code>link in</code> node to call on normal/runtime execution mode.</p>
-         <p>To enable the test execution mode (Unit Tests), You must set the <code>Global.runtime_profile</code> variable to <code>"TEST"</code>.<p>
-         <p>If test execution mode is enabled, the suffix <code>.mock</code> is added to <code>target</code> before to perform the call.<p>
-      </dd>
-   </dl>
-
    
 Before use API Gateway, first configure the rules sending a <code>msg.payload</code> with a JSON like this:
 
@@ -72,6 +59,10 @@ this:
 ```
 
 Then You can take an action filtering by <code>msg.req.autana.action.actionId</code>
+
+## Remarks
+
+In your main flow, you must connect a <code>http response</code> node as the end of your flow.
 
 ## Extension
 
