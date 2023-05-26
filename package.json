@@ -1,0 +1,34 @@
+{
+  "name": "autana-api-gateway",
+  "version": "1.0.0",
+  "description": "A minimalist API-Gateway for Node-RED",
+  "keywords": [
+    "node-red",
+    "autana",
+    "rest", 
+    "api", 
+    "apigateway", 
+    "http",
+    "json",
+    "jsonata"
+  ],
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "node-red": {
+    "version": ">=1.3.7",
+    "nodes": {
+      "apiGateway": "subflow.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/autanalabs/autana-api-gateway.git"
+  },
+  "author": "Gilbert Gonzalez <gb@autanalabs.com> (http://autanalabs.com)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/autanalabs/autana-api-gateway/issues"
+  },
+  "homepage": "https://github.com/autanalabs/autana-api-gateway#readme"
+}
