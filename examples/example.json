@@ -1,0 +1,150 @@
+[
+    {
+        "id": "2105e876d9da3ccd",
+        "type": "tab",
+        "label": "example",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "987363d1df41655c",
+        "type": "http response",
+        "z": "2105e876d9da3ccd",
+        "name": "http response",
+        "statusCode": "",
+        "headers": {},
+        "x": 440,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "2975da337a9b547f",
+        "type": "inject",
+        "z": "2105e876d9da3ccd",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"GET\":{\"/pets/\":{\"actionId\":\"read all pets\"},\"/pets/:petId\":{\"actionId\":\"read pet\"}},\"PUT\":{\"/pets/\":{\"actionId\":\"create pet\"},\"/pets/:petId\":{\"actionId\":\"update pet\",\"persistence\":{\"table\":\"dbo.pets\"}}},\"DELETE\":{\"/pets/:petId\":{\"actionId\":\"delete pet\"}}}",
+        "payloadType": "json",
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "1239d18a63f5b541"
+            ]
+        ]
+    },
+    {
+        "id": "da66c1f8d9873464",
+        "type": "comment",
+        "z": "2105e876d9da3ccd",
+        "name": "load Http Rules from msg",
+        "info": "",
+        "x": 150,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "fae986997a6c2aea",
+        "type": "switch",
+        "z": "2105e876d9da3ccd",
+        "name": "",
+        "property": "req.autana.action.actionId",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "read all pets",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "read pet",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "create pet",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "update pet",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "delete pet",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 6,
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [
+                "987363d1df41655c"
+            ],
+            [
+                "987363d1df41655c"
+            ],
+            [
+                "987363d1df41655c"
+            ],
+            [
+                "987363d1df41655c"
+            ],
+            [
+                "987363d1df41655c"
+            ],
+            [
+                "987363d1df41655c"
+            ]
+        ]
+    },
+    {
+        "id": "c0375ae4431bf475",
+        "type": "debug",
+        "z": "2105e876d9da3ccd",
+        "name": "actionId",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "req.autana.action.actionId",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "1239d18a63f5b541",
+        "type": "com.autanalabs.apiGateway",
+        "z": "2105e876d9da3ccd",
+        "name": "",
+        "x": 290,
+        "y": 160,
+        "wires": [
+            [
+                "fae986997a6c2aea",
+                "c0375ae4431bf475"
+            ]
+        ]
+    }
+]
