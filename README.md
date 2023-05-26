@@ -60,6 +60,10 @@ this:
 
 Then You can take an action filtering by <code>msg.req.autana.action.actionId</code>
 
+![exampleFlow](./examples/mainFlow.png)
+
+![actionId filtering](./examples/mainFlowFiltering.png)
+
 ## Remarks
 
 In your main flow, you must connect a <code>http response</code> node as the end of your flow.
